@@ -25,6 +25,14 @@ public class BaseTest {
         DriverManager.quitDriver();
     }
 
+    public String getCurrentUrl(){
+       return driver.getCurrentUrl();
+    }
+
+    public void navigateTo(String url){
+       driver.navigate().to(url);
+    }
+
 
     public void verifyCurrentUrl(String expectedUrl){
         Assert.assertEquals(driver.getCurrentUrl(),expectedUrl);
@@ -35,5 +43,5 @@ public class BaseTest {
     }
 
 
-21:31
+
 }

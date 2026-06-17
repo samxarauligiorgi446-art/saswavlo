@@ -28,7 +28,8 @@ public class BasePage {
     }
 
     public String getText(WebElement locator){
-        locator.getText();
+        return locator.getText();
+
     }
 
     public String getCssValue(WebElement locator, String propertyName){
