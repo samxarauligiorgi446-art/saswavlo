@@ -1,0 +1,17 @@
+    <suite name ="POM Project Test">
+
+        <test name="Login Page">
+<!--            <groups>-->
+<!--                <run>-->
+<!--                    <include name="ui"/>-->
+<!--                </run>-->
+<!--            </groups>-->
+            <parameter name="username" value="standard_user"/>
+            <parameter name="password" value="secret_sauce"/>
+            <classes>
+                <class name ="org.example.Tests.LoginTest"/>
+                <class name="org.example.Tests.InventoryTest"/>
+            </classes>
+        </test>
+
+    </suite>

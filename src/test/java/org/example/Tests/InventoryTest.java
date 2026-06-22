@@ -1,6 +1,7 @@
 package org.example.Tests;
 
 import org.example.BaseTest;
+import org.example.Utils.ConfigReader;
 import org.example.pages.CartPage;
 import org.example.pages.InventoryPage;
 import org.example.pages.LoginPage;
@@ -8,10 +9,10 @@ import org.testng.annotations.Test;
 
 public class InventoryTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression","ui","addCart"})
     public void testAddcart(){
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user","secret_sauce" );
+        loginPage.login(ConfigReader.get("user.name"),"user.pass" );
 
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addToCartBikeBtn();

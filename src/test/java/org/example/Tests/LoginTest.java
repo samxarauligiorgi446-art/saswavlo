@@ -4,17 +4,37 @@ import org.example.BaseTest;
 import org.example.pages.InventoryPage;
 import org.example.pages.LoginPage;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
 
+    @DataProvider(name="userData")
+    public Object[][] provideData(){
+        return new Object[][]{
+                {"nana"},
+                {"giorgi"},
+                {"saba"},
+                {"sofia"},
+                {"tekla"},
+                {"mariami"}
+        };
+    }
 
-    @Test
-    public void testValidLogin(){
+
+    @Test(dataProvider = "userData")
+    public void simpleTest(String username){
+        System.out.println("Hello" + username);
+    }
+
+    @Test(groups = {"smoke", "regression","login","blackbox"})
+    @Parameters({"username","password"})
+    public void testValidLogin(String username,String password){
         LoginPage loginPage = new LoginPage(driver);
         //login
-        loginPage.login("standard_user","secret_sauce");
+        loginPage.login(username,password);
 
         //verify curent url
         verifyCurrentUrl("https://www.saucedemo.com/inventory.html");
@@ -24,7 +44,7 @@ public class LoginTest extends BaseTest {
         compareText(inventoryPage.getInventoryHeaderText(),"Products");
     }
 
-    @Test
+    @Test(groups = {"regression","ui"})
     public void testLoginButtonTextColor(){
         LoginPage loginPage = new LoginPage(driver);
 
