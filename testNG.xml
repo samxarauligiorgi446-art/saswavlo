@@ -1,11 +1,15 @@
     <suite name ="POM Project Test">
 
+        <listeners>
+            <listener class-name="org.example.Utils.TestListener"/>
+        </listeners>
+
         <test name="Login Page">
-<!--            <groups>-->
+<!--            `<groups>-->
 <!--                <run>-->
-<!--                    <include name="ui"/>-->
+<!--                    <include name="smoke"  />-->
 <!--                </run>-->
-<!--            </groups>-->
+<!--            </groups>`-->
             <parameter name="username" value="standard_user"/>
             <parameter name="password" value="secret_sauce"/>
             <classes>

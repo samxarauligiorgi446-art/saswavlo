@@ -10,15 +10,15 @@ import org.testng.annotations.*;
 public class BaseTest {
    protected WebDriver driver;
 
-   @BeforeTest
+   @BeforeTest(alwaysRun = true)
     public void setUp(){
 
         driver = DriverManager.getDriver();
         driver.manage().window().maximize();
-       ConfigReader.get("base.url");
+       driver.get(ConfigReader.get("base.url"));
     }
 
-    @AfterTest
+//    @AfterTest(alwaysRun = true)
     public void tearDown(){
         DriverManager.quitDriver();
     }
