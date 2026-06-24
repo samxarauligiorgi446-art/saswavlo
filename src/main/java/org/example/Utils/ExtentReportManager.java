@@ -6,7 +6,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentReportManager {
     private static ExtentReports extent;
-    private static ThreadLocal test = new ThreadLocal<>(); // ThreadLocal for parallel execution
+    private static ThreadLocal <ExtentTest>test = new ThreadLocal<>(); // ThreadLocal for parallel execution
 
     // Initialize ExtentReports
     public static ExtentReports getExtentReports() {

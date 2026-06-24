@@ -10,7 +10,7 @@ import org.testng.annotations.*;
 public class BaseTest {
    protected WebDriver driver;
 
-   @BeforeTest(alwaysRun = true)
+   @BeforeMethod(alwaysRun = true)
     public void setUp(){
 
         driver = DriverManager.getDriver();
@@ -18,7 +18,7 @@ public class BaseTest {
        driver.get(ConfigReader.get("base.url"));
     }
 
-//    @AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         DriverManager.quitDriver();
     }
