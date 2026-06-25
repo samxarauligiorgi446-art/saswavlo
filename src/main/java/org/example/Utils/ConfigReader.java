@@ -21,4 +21,8 @@ public class ConfigReader {
         return read(key);
     }
 
+    public static Long getLong(String key){
+        return Long.parseLong(read(key));
+    }
+
 }
