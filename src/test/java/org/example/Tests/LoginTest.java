@@ -1,15 +1,27 @@
 package org.example.Tests;
 
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.http.ContentType.JSON;
+import static org.hamcrest.Matchers.equalTo;
+
 import io.restassured.RestAssured;
+import io.restassured.mapper.ObjectMapper;
+import io.restassured.mapper.ObjectMapperDeserializationContext;
+import io.restassured.mapper.ObjectMapperSerializationContext;
+import io.restassured.response.Response;
 import org.example.BaseTest;
 import org.example.pages.InventoryPage;
 import org.example.pages.LoginPage;
+import org.openqa.selenium.json.Json;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import static io.restassured.path.xml.XmlPath.given;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LoginTest extends BaseTest {
 
@@ -56,18 +68,37 @@ public class LoginTest extends BaseTest {
 //        compareText(actualColor,expectedColor);
 //    }
 
-
+@Test
     public void testGetPosts(){
         RestAssured.baseURI="https://jsonplaceholder.typicode.com/";
 
-                given()
+        Map <String,Object> requestBody = new HashMap<>();
+        requestBody.put("title","foo");
+        requestBody.put("body","bar");
+        requestBody.put("userId",1);
 
-                .when()
 
-                .get("/posts")
 
-                .then();
+                    given()
 
-                39.29
+
+//                    .header("Authorization","bearer your_token_is_here")
+    //              .pathParam("userId",1)
+//                    .contentType(JSON)
+//                    .body(requestBody)
+
+                    .when()
+
+                    .get("/posts/1")
+
+                    .then()
+                    .statusCode(200)
+                            .body("userId",equalTo(1));
+//                    .extract()
+//                    .path("title");
+
+
+
+
     }
 }

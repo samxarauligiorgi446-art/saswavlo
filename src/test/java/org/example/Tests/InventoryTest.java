@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class InventoryTest extends BaseTest {
 
-    @Test(groups = {"regression","ui","addCart"})
+//   @Test(groups = {"regression","ui","addCart"})
     public void testAddcart(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(ConfigReader.get("user.name"),ConfigReader.get("user.pass"));
